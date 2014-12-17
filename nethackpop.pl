@@ -7,7 +7,7 @@ open IN, '/var/games/nethack/logfile';
 my @log = <IN>;
 close IN;
 
-open OUT, ">", "www/nethackizens.html";
+open OUT, ">", "www/nethackempire.html";
 select OUT;
 
 my @userCount;
@@ -21,7 +21,7 @@ print "
 <!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 3.2//EN\">\n
 <html>\n
 <head>\n
-<title>server nethack demographics</title>\n
+<title>nethack empire</title>\n
 <link href=\"/screen.css\" type=\"text/css\" rel=\"stylesheet\" />\n
 </head>\n
 <body>\n
