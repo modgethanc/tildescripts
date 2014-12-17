@@ -26,7 +26,7 @@ print "
 </head>\n
 <body>\n
 <h1><a href=\"index.html\">~endorphant</a>@<a href=\"../\">ctrl-c.club</a></h1>\n
-<h3>server nethack demographics</h3>\n ";
+<h3>nethack empire demographics</h3>\n ";
 
 
 #print "<ul>\n";
@@ -51,13 +51,17 @@ foreach (@log) {
 	} 
 
 	$empires{$user}[0]++;
-
+	
+	if ($gender =~ /Mal/) { $empires{$user}[1]++; } 
+		else { $empires{$user}[2]++; }
 }
 
 print "<ul>\n";
 
 for (keys %empires) {
-	print "<li>the empire of $_ has a population of $empires{$_}[0]</li>\n";
+	print "<li>$_ empire; pop. $empires{$_}[0]<br \>\n
+		gender ratio: $empires{$_}[1]:$empires{$_}[2]</li>\n";
+	print "<br />\n";
 }
 
 print "</ul>\n";
@@ -87,5 +91,6 @@ print "</ul>\n";
 #	print "<li>the empire of $target has a population of $count</li>\n";
 #}
 
+print "<p><small><i>sourced from <a href=\"nethackboard.html\">server nethack logs</a></i></small></p>\n";
 print "</body>\n</html>\n";
 close OUT;
