@@ -10,8 +10,6 @@ close IN;
 open OUT, ">", "www/nethackempire.html";
 select OUT;
 
-my @userCount;
-
 my %empires = ();
 
 # NOTES
@@ -29,8 +27,6 @@ print "
 <h3>nethack empire demographics</h3>\n ";
 
 
-#print "<ul>\n";
-
 foreach (@log) {
 	my @line = split(' ', $_);
 	my $role = $line[11];
@@ -40,57 +36,41 @@ foreach (@log) {
 	my @tomb = split(',', $line[15]);
 	my $user = shift(@tomb);
 	
-	push(@userCount, $user);	
-
-	#print "<li>";
-	#print "user: $user; race: $race; role: $role; gender: $gender; alignment: $align"; #DEBUG LINE
-	#print "</li>\n";
-
 	if (!exists $empires{$user}) {
 		$empires{$user} = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+		# 0 pop 1 m 2 f 3 chao 4 neu 5 law 6 hum 7 dwa 8 elf 9 gno 10 orc
 	} 
 
 	$empires{$user}[0]++;
 	
 	if ($gender =~ /Mal/) { $empires{$user}[1]++; } 
 		else { $empires{$user}[2]++; }
+
+	if ($align =~ /Cha/) { $empires{$user}[3]++; }
+		elsif ($align =~ /Neu/) { $empires{$user}[4]++; }
+		else { $empires{$user}[5]++; }
 }
 
 print "<ul>\n";
 
 for (keys %empires) {
-	print "<li>$_ empire; pop. $empires{$_}[0]<br \>\n
+	my $alignment = "divided";
+	my $civ = "venture";
+	
+	if (($empires{$_}[3] > $empires{$_}[4]) && ($empires{$_}[3] > $empires{$_}[5])) {
+		$alignment = "chaotic";
+	}
+	
+	if ($empires{$_}[0] > 1) { $civ = "party"; }
+
+	print "<li><b>the $alignment $civ of <a href=\"../~$_\">~$_</a></b><br />\n
+		 pop. $empires{$_}[0]<br />\n
 		gender ratio: $empires{$_}[1]:$empires{$_}[2]</li>\n";
 	print "<br />\n";
 }
 
 print "</ul>\n";
 
-#my @users = uniq(@userCount);
-
-#my @users;
-
-#foreach my $self (@userCount) {
-#	if (grep {$_ eq $self } @users) {
-#	} else {
-#		push(@users, $self);
-#	}
-#}
-
-#print "</ul>\n
-#<ul>\n";
-
-#foreach my $target (@users) {
-#	my $count;
-#	foreach my $curr (@userCount) {
-#		if ($curr =~ $target) {
-#			$count++;
-#		}
-#	}
-
-#	print "<li>the empire of $target has a population of $count</li>\n";
-#}
-
-print "<p><small><i>sourced from <a href=\"nethackboard.html\">server nethack logs</a></i></small></p>\n";
+print "<p><small><i>sourced from <a href=\"nethacklog.html\">server nethack logs</a></i></small></p>\n";
 print "</body>\n</html>\n";
 close OUT;
