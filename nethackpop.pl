@@ -1,10 +1,13 @@
 #!/usr/bin/perl -w
 #use strict;
-#use List::MoreUtils qw(uniq);
 
 
 open IN, '/var/games/nethack/logfile';
 my @log = <IN>;
+close IN;
+
+open IN, 'empireheader.txt';
+my @header = <IN>;
 close IN;
 
 open OUT, ">", "www/nethackempire.html";
@@ -12,20 +15,7 @@ select OUT;
 
 my %empires = ();
 
-# NOTES
-# let's make a map of empire=>array; array contains male/female and alignment count
-
-print "
-<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 3.2//EN\">\n
-<html>\n
-<head>\n
-<title>nethack empire</title>\n
-<link href=\"/screen.css\" type=\"text/css\" rel=\"stylesheet\" />\n
-</head>\n
-<body>\n
-<h1><a href=\"index.html\">~endorphant</a>@<a href=\"../\">ctrl-c.club</a></h1>\n
-<h3>nethack empire demographics</h3>\n ";
-
+print @header;
 
 foreach (@log) {
 	my @line = split(' ', $_);
@@ -61,7 +51,19 @@ for (keys %empires) {
 		$alignment = "chaotic";
 	}
 	
+	if (($empires{$_}[4] > $empires{$_}[3]) && ($empires{$_}[4] > $empires{$_}[5])) {
+		$alignment = "neutral";
+	}
+
+	if (($empires{$_}[5] > $empires{$_}[4]) && ($empires{$_}[5] > $empires{$_}[5])) {
+		$alignment = "lawful";
+	}
+	
 	if ($empires{$_}[0] > 1) { $civ = "party"; }
+	if ($empires{$_}[0] > 4) { $civ = "gang"; }
+	if ($empires{$_}[0] > 11) { $civ = "patrol"; }
+	if ($empires{$_}[0] > 24) { $civ = "outpost"; }
+	if ($empires{$_}[0] > 39) { $civ = "village"; }
 
 	print "<li><b>the $alignment $civ of <a href=\"../~$_\">~$_</a></b><br />\n
 		 pop. $empires{$_}[0]<br />\n
