@@ -1,5 +1,5 @@
 #!/usr/bin/perl -w
-use strict;
+#use strict;
 #use List::MoreUtils qw(uniq);
 
 
@@ -12,7 +12,7 @@ select OUT;
 
 my @userCount;
 
-my %empires;
+my %empires = ();
 
 # NOTES
 # let's make a map of empire=>array; array contains male/female and alignment count
@@ -45,32 +45,47 @@ foreach (@log) {
 	#print "<li>";
 	#print "user: $user; race: $race; role: $role; gender: $gender; alignment: $align"; #DEBUG LINE
 	#print "</li>\n";
+
+	if (!exists $empires{$user}) {
+		$empires{$user} = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+	} 
+
+	$empires{$user}[0]++;
+
 }
+
+print "<ul>\n";
+
+for (keys %empires) {
+	print "<li>the empire of $_ has a population of $empires{$_}[0]</li>\n";
+}
+
+print "</ul>\n";
 
 #my @users = uniq(@userCount);
 
-my @users;
+#my @users;
 
-foreach my $self (@userCount) {
-	if (grep {$_ eq $self } @users) {
-	} else {
-		push(@users, $self);
-	}
-}
+#foreach my $self (@userCount) {
+#	if (grep {$_ eq $self } @users) {
+#	} else {
+#		push(@users, $self);
+#	}
+#}
 
-print "</ul>\n
-<ul>\n";
+#print "</ul>\n
+#<ul>\n";
 
-foreach my $target (@users) {
-	my $count;
-	foreach my $curr (@userCount) {
-		if ($curr =~ $target) {
-			$count++;
-		}
-	}
+#foreach my $target (@users) {
+#	my $count;
+#	foreach my $curr (@userCount) {
+#		if ($curr =~ $target) {
+#			$count++;
+#		}
+#	}
 
-	print "<li>the empire of $target has a population of $count</li>\n";
-}
+#	print "<li>the empire of $target has a population of $count</li>\n";
+#}
 
-print "</ul>\n</body>\n</html>\n";
+print "</body>\n</html>\n";
 close OUT;
