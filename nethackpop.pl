@@ -6,11 +6,11 @@ open IN, '/var/games/nethack/logfile';
 my @log = <IN>;
 close IN;
 
-open IN, 'empireheader.txt';
+open IN, '/home/endorphant/scripts/empireheader.txt';
 my @header = <IN>;
 close IN;
 
-open OUT, ">", "www/nethackempire.html";
+open OUT, ">", "/home/endorphant/scripts/www/nethackempire.html";
 select OUT;
 
 my %empires = ();
@@ -25,13 +25,15 @@ foreach (@log) {
 	my $align = $line[14];
 	my @tomb = split(',', $line[15]);
 	my $user = shift(@tomb);
+	my $score = $line[1];
 	
 	if (!exists $empires{$user}) {
-		$empires{$user} = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-		# 0 pop 1 m 2 f 3 chao 4 neu 5 law 6 hum 7 dwa 8 elf 9 gno 10 orc
+		$empires{$user} = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+		# 0 pop 1 m 2 f 3 chao 4 neu 5 law 6 hum 7 dwa 8 elf 9 gno 10 orc 11 score
 	} 
 
 	$empires{$user}[0]++;
+	$empires{$user}[11] += $score;
 	
 	given ($gender) {
 		when (/Mal/) { $empires{$user}[1]++ ;}
@@ -88,9 +90,11 @@ for (keys %empires) {
 	if ($empires{$_}[10] > 0) { push(@races, "orcish"); }
 
 	my $lineup = join("/", @races);
+	
+	my $worth = $empires{$_}[11] / $empires{$_}[0];
 
-	print "<li><b>the $alignment $lineup $civ of <a href=\"../~$_\">~$_</a></b><br />\n
-		 pop. $empires{$_}[0]<br />\n
+	print "<li><b>the $alignment $lineup $civ of <a href=\"../~$_\">~$_</a>, worth $empires{$_}[11]</b><br />\n
+		 pop. $empires{$_}[0], avg net worth: $worth<br />\n
 		gender ratio: $empires{$_}[1]:$empires{$_}[2]</li>\n";
 	print "<br />\n";
 }

@@ -6,7 +6,7 @@ open IN, '/var/games/nethack/logfile';
 my @log = <IN>;
 close IN;
 
-open OUT, ">", "www/nethacklog.html";
+open OUT, ">", "/home/endorphant/scripts/www/nethacklog.html";
 select OUT;
 #print @log;
 
