@@ -94,7 +94,7 @@ for (keys %empires) {
 	my $worth = $empires{$_}[11] / $empires{$_}[0];
 
 	print "<li><b>the $alignment $lineup $civ of <a href=\"../~$_\">~$_</a>, worth $empires{$_}[11]</b><br />\n
-		 pop. $empires{$_}[0], avg net worth: $worth<br />\n
+		pop: $empires{$_}[0]; avg net worth: $worth<br />\n
 		gender ratio: $empires{$_}[1]:$empires{$_}[2]</li>\n";
 	print "<br />\n";
 }
