@@ -69,7 +69,7 @@ for (keys %empires) {
 		$alignment = "neutral";
 	}
 
-	if (($empires{$_}[5] > $empires{$_}[4]) && ($empires{$_}[5] > $empires{$_}[5])) {
+	if (($empires{$_}[5] > $empires{$_}[4]) && ($empires{$_}[5] > $empires{$_}[3])) {
 		$alignment = "lawful";
 	}
 
