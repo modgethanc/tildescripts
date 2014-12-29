@@ -1,6 +1,7 @@
 #!/usr/bin/perl -w
 #use strict;
 use feature qw(switch);
+no warnings 'experimental::smartmatch';
 
 open IN, '/var/games/nethack/logfile';
 my @log = <IN>;
