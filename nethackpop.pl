@@ -97,7 +97,7 @@ for (keys %empires) {
 	if ($#races > 2) { $lineup = "multiracial"; }
 	else { $lineup = join("/", @races);}
 	
-	my $worth = $empires{$_}[11] / $empires{$_}[0];
+	my $worth = int($empires{$_}[11] / $empires{$_}[0]);
 
 	print "<li><b>the $alignment $lineup $civ of <a href=\"../~$_\">~$_</a>, worth $empires{$_}[11]</b><br />\n
 		pop: $empires{$_}[0]; avg net worth: $worth<br />\n
