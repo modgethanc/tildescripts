@@ -81,6 +81,8 @@ for (keys %empires) {
 	if ($empires{$_}[0] > 11) { $civ = "patrol"; }
 	if ($empires{$_}[0] > 24) { $civ = "outpost"; }
 	if ($empires{$_}[0] > 39) { $civ = "village"; }
+	if ($empires{$_}[0] > 59) { $civ = "township"; }
+	if ($empires{$_}[0] > 99) { $civ = "enclave"; }
 
 	my @races;
 
