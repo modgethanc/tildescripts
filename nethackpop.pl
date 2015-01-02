@@ -91,8 +91,11 @@ for (keys %empires) {
 	if ($empires{$_}[8] > 0) { push(@races, "elven"); }
 	if ($empires{$_}[9] > 0) { push(@races, "gnomish"); }
 	if ($empires{$_}[10] > 0) { push(@races, "orcish"); }
+	
+	my $lineup;
 
-	my $lineup = join("/", @races);
+	if ($#races > 2) { $lineup = "multiracial"; }
+	else { $lineup = join("/", @races);}
 	
 	my $worth = $empires{$_}[11] / $empires{$_}[0];
 
