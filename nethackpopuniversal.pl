@@ -4,21 +4,26 @@ use feature qw(switch);
 no warnings 'experimental::smartmatch';
 
 open IN, '/home/endorphant/scripts/town.txt';
-my @town= <IN>;
+my @town = <IN>;
 close IN;
 
 open IN, '/home/endorphant/scripts/farm.txt';
-my @farm= <IN>;
+my @farm = <IN>;
 close IN;
 
 open IN, '/home/endorphant/scripts/ctrlc.txt';
-my @ctrlc= <IN>;
+my @ctrlc = <IN>;
+close IN;
+
+open IN, '/home/endorphant/scripts/club6.txt';
+my @club6 = <IN>;
 close IN;
 
 my @universal;
 push(@universal, @town);
 push(@universal, @farm);
 push(@universal, @ctrlc);
+push(@universal, @club6);
 
 open IN, '/home/endorphant/scripts/empireheader.txt';
 my @header = <IN>;
@@ -126,6 +131,7 @@ sub printEmpire {
 my %ctrlcEmpires = &parseLog(\@ctrlc);
 my %townEmpires = &parseLog(\@town);
 my %farmEmpires = &parseLog(\@farm);
+my %club6Empires = &parseLog(\@club6);
 my %universalEmpires = &parseLog(\@universal);
 
 open OUT, ">", "/home/endorphant/scripts/www/nethackempire.html";
@@ -156,5 +162,12 @@ print "<ul>\n";
 print "</ul>\n";
 print "<p><small><i>sourced from <a href=\"http://tilde.farm/~endorphant/nethacklog.txt\">tilde.farm server nethack logs</a></i></small></p>\n";
 
+print "<h3>the continent of <a href=\"http://club6.nl\">sixenlla</a></h3>\n";
+print "<ul>\n";
+&printEmpire(\%club6Empires, "http://club6.nl");
+print "</ul>\n";
+print "<p><small><i>sourced from <a href=\"http://club6.nl/nethacklog.txt\">club6.nl server nethack logs</a></i></small></p>\n";
+
+print "<p><i>contact me on any tildebox we share if you want to add an outside servr to this page!</i><p>\n";
 print "</body>\n</html>\n";
 close OUT;
