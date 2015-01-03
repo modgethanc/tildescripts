@@ -3,7 +3,7 @@
 use feature qw(switch);
 no warnings 'experimental::smartmatch';
 
-open IN, '/home/endorphant/public_html/nethacklogs.txt';
+open IN, '/home/endorphant/public_html/nethacklog.txt';
 my @log = <IN>;
 close IN;
 
