@@ -3,7 +3,7 @@
 use feature qw(switch);
 no warnings 'experimental::smartmatch';
 
-open IN, '/var/games/nethack/logfile';
+open IN, '/home/endorphant/public_html/nethacklogs.txt';
 my @log = <IN>;
 close IN;
 
@@ -107,6 +107,6 @@ for (keys %empires) {
 
 print "</ul>\n";
 
-print "<p><small><i>sourced from <a href=\"nethacklog.html\">server nethack logs</a></i></small></p>\n";
+print "<p><small><i>sourced from <a href=\"nethacklog.txt\">server nethack logs</a></i></small></p>\n";
 print "</body>\n</html>\n";
 close OUT;

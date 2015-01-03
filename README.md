@@ -1,4 +1,4 @@
-# ctrl-c scripts
+# tildebox scripts
 ==============
 
-are scripts i'm running on ctrl-c.club (i'm ~endorphant)
+are scripts i'm running on various tilde boxes (i'm usually ~endorphant)
