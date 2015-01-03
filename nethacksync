@@ -1,0 +1,5 @@
+#!/bin/bash
+
+wget -O town.txt http://tilde.town/~endorphant/nethacklog.txt
+wget -O farm.txt http://tilde.farm/~endorphant/nethacklog.txt
+wget -O ctrlc.txt http://ctrl-c.club/~endorphant/nethacklog.txt
