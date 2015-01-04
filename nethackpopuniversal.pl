@@ -77,7 +77,7 @@ sub printEmpire {
 	my %empires = %{$_[0]};
 	my $local = $_[1];
 
-	for (keys %empires) {
+	for (sort keys %empires) {
  		my $alignment = "divided";
 	
 		if (($empires{$_}[3] > $empires{$_}[4]) && ($empires{$_}[3] > $empires{$_}[5])) {
