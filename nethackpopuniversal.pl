@@ -101,6 +101,7 @@ sub printEmpire {
 		if ($empires{$_}[0] > 39) { $civ = "village"; }
 		if ($empires{$_}[0] > 59) { $civ = "township"; }
 		if ($empires{$_}[0] > 99) { $civ = "enclave"; }
+		if ($empires{$_}[0] > 139) { $civ = "territories"; }
 
 		my @races;
 
@@ -121,7 +122,8 @@ sub printEmpire {
 		if ($local !~ /none/) {
 			print "<a href=\"$local/~$_\">";
 		}	
-		print "~$_</a>, worth $empires{$_}[11]</b><br />\n
+		print "~$_</a></b><br />\n
+			total net worth: $empires{$_}[11]<br />\n
 			pop: $empires{$_}[0]; avg net worth: $worth<br />\n
 			gender ratio: $empires{$_}[1]:$empires{$_}[2]</li>\n";
 		print "<br />\n";
