@@ -20,7 +20,8 @@ my $i = 0;
 foreach my $newEntry (@log) {
 	foreach my $oldEntry (@old) {
 		if ($newEntry =~ $oldEntry) {	
-			delete $log[$i];
+			#delete $log[$i];
+			splice @log, $i, 1;
 		} 
 	}
 	$i++;
