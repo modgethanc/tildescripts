@@ -18,19 +18,17 @@ foreach (@old) {
 my $i = 0;
 
 foreach my $newEntry (@log) {
+	$i = 0;
 	foreach my $oldEntry (@old) {
 		if ($newEntry =~ $oldEntry) {	
-			#delete $log[$i];
-			splice @log, $i, 1;
+			$i++;
 		} 
 	}
-	$i++;
-}
 
-foreach (@log) {
-	push(@new, $_);
+	if ($i == 0) {
+		push(@new, $newEntry);
+	} 
 }
-
 
 open OUT, ">", "/home/endorphant/public_html/nethacklog.txt";
 select OUT;
