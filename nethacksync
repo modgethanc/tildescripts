@@ -4,4 +4,4 @@ cd /home/endorphant/scripts/
 wget -qO town.txt http://tilde.town/~endorphant/nethacklog.txt
 wget -qO farm.txt http://tilde.farm/~endorphant/nethacklog.txt
 wget -qO ctrlc.txt http://ctrl-c.club/~endorphant/nethacklog.txt
-wget -qO club6.txt https://club6.nl/nethacklog.txt
+wget -qO club6.txt https://club6.nl/json/nethacklog.txt
