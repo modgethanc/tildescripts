@@ -168,7 +168,7 @@ print "<h3>the continent of <a href=\"http://club6.nl\">sixenlla</a></h3>\n";
 print "<ul>\n";
 &printEmpire(\%club6Empires, "http://club6.nl");
 print "</ul>\n";
-print "<p><small><i>sourced from <a href=\"http://club6.nl/nethacklog.txt\">club6.nl server nethack logs</a></i></small></p>\n";
+print "<p><small><i>sourced from <a href=\"http://club6.nl/json/nethacklog.txt\">club6.nl server nethack logs</a></i></small></p>\n";
 
 print "<p><i>contact me on any tildebox we share if you want to add an outside servr to this page!</i><p>\n";
 print "</body>\n</html>\n";
