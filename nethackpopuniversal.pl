@@ -147,28 +147,28 @@ print "<ul>\n";
 print "</ul>\n";
 
 print "<h3>the continent of <a href=\"http://ctrl-c.club\">kutrlcilia</a></h3>\n";
+print "<p><small><i>sourced from <a href=\"http://ctrl-c.club/~endorphant/nethacklog.txt\">ctrl-c.club server nethack logs</a></i></small></p>\n";
 print "<ul>\n";
 &printEmpire(\%ctrlcEmpires, "http://ctrl-c.club");
 print "</ul>\n";
-print "<p><small><i>sourced from <a href=\"http://ctrl-c.club/~endorphant/nethacklog.txt\">ctrl-c.club server nethack logs</a></i></small></p>\n";
 
 print "<h3>the continent of <a href=\"http://tilde.town\">townnia</a></h3>\n";
+print "<p><small><i>sourced from <a href=\"http://tilde.town/~endorphant/nethacklog.txt\">tilde.town server nethack logs</a></i></small></p>\n";
 print "<ul>\n";
 &printEmpire(\%townEmpires, "http://tilde.town");
 print "</ul>\n";
-print "<p><small><i>sourced from <a href=\"http://tilde.town/~endorphant/nethacklog.txt\">tilde.town server nethack logs</a></i></small></p>\n";
 
 print "<h3>the continent of <a href=\"http://tilde.farm\">farmia</a></h3>\n";
+print "<p><small><i>sourced from <a href=\"http://tilde.farm/~endorphant/nethacklog.txt\">tilde.farm server nethack logs</a></i></small></p>\n";
 print "<ul>\n";
 &printEmpire(\%farmEmpires, "http://tilde.farm");
 print "</ul>\n";
-print "<p><small><i>sourced from <a href=\"http://tilde.farm/~endorphant/nethacklog.txt\">tilde.farm server nethack logs</a></i></small></p>\n";
 
 print "<h3>the continent of <a href=\"http://club6.nl\">sixenlla</a></h3>\n";
+print "<p><small><i>sourced from <a href=\"http://club6.nl/json/nethacklog.txt\">club6.nl server nethack logs</a></i></small></p>\n";
 print "<ul>\n";
 &printEmpire(\%club6Empires, "http://club6.nl");
 print "</ul>\n";
-print "<p><small><i>sourced from <a href=\"http://club6.nl/json/nethacklog.txt\">club6.nl server nethack logs</a></i></small></p>\n";
 
 print "<p><i>contact me on any tildebox we share if you want to add an outside server to this page!</i><p>\n";
 print "</body>\n</html>\n";
