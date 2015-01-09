@@ -170,6 +170,6 @@ print "<ul>\n";
 print "</ul>\n";
 print "<p><small><i>sourced from <a href=\"http://club6.nl/json/nethacklog.txt\">club6.nl server nethack logs</a></i></small></p>\n";
 
-print "<p><i>contact me on any tildebox we share if you want to add an outside servr to this page!</i><p>\n";
+print "<p><i>contact me on any tildebox we share if you want to add an outside server to this page!</i><p>\n";
 print "</body>\n</html>\n";
 close OUT;
